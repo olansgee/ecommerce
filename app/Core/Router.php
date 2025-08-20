@@ -43,7 +43,7 @@ class Router {
         if ($this->match($url)) {
             $controller = $this->params['controller'];
             $controller = $this->convertToPascalCase($controller);
-            $controller = "App\Controllers\\" . $controller;
+            $controller = "App\Controllers\\" . $controller . "Controller";
 
             if (class_exists($controller)) {
                 $controller_object = new $controller($this->params);

@@ -34,7 +34,7 @@
     <div class="d-flex">
         <!-- Desktop Sidebar -->
         <div class="d-none d-lg-block sidebar-desktop">
-            <?php include('../app/views/partials/sidebar.php'); ?>
+            <?php include('../app/Views/partials/sidebar.php'); ?>
         </div>
 
         <!-- Main Content -->
