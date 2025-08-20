@@ -31,7 +31,7 @@ abstract class Controller {
 
     public function view($view, $data = []) {
         extract($data);
-        $file = "../app/views/$view.php";
+        $file = "../app/Views/$view.php";
         if (is_readable($file)) {
             require $file;
         } else {
