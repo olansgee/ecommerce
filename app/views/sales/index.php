@@ -40,25 +40,23 @@
                 <h5 class="card-title mb-0">Shopping Cart</h5>
             </div>
             <div class="card-body">
-                <?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
+                <?php if(!empty($cart_items)): ?>
                     <?php
                     $total = 0;
-                    foreach($_SESSION['cart'] as $product_id => $quantity):
-                        $product = App\Models\Product::getById($product_id);
-                        if(!$product) continue;
-                        $subtotal = $product['price'] * $quantity;
+                    foreach($cart_items as $item):
+                        $subtotal = $item['price'] * $item['quantity'];
                         $total += $subtotal;
                     ?>
                     <div class="cart-item">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <div class="fw-bold"><?= $product['name'] ?></div>
-                                <div>₦<?= number_format($product['price'], 2) ?> x <?= $quantity ?></div>
+                                <div class="fw-bold"><?= $item['name'] ?></div>
+                                <div>₦<?= number_format($item['price'], 2) ?> x <?= $item['quantity'] ?></div>
                             </div>
                             <div class="text-end">
                                 <div class="fw-bold">₦<?= number_format($subtotal, 2) ?></div>
                                 <form action="/sale/removefromcart" method="post" class="d-inline">
-                                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                    <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                                     <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                 </form>
                             </div>

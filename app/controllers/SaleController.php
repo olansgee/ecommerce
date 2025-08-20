@@ -10,7 +10,27 @@ class SaleController extends Controller {
     public function index() {
         $this->checkAuth(['admin', 'cashier', 'customer']);
         $products = Product::getAll();
-        $this->view('sales/index', ['title' => 'Point of Sale', 'products' => $products]);
+
+        $cart_items = [];
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $product_id => $quantity) {
+                $product = Product::getById($product_id);
+                if ($product) {
+                    $cart_items[] = [
+                        'id' => $product_id,
+                        'name' => $product['name'],
+                        'price' => $product['price'],
+                        'quantity' => $quantity
+                    ];
+                }
+            }
+        }
+
+        $this->view('sales/index', [
+            'title' => 'Point of Sale',
+            'products' => $products,
+            'cart_items' => $cart_items
+        ]);
     }
 
     public function addToCart() {
