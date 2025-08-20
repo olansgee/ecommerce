@@ -14,7 +14,12 @@ define('ORG_EMAIL', 'sales.olansgee@gmail.com');
 define('REPORT_RECIPIENTS', 'sales.olansgee@gmail.com,olansgee@gmail.com');
 
 // Application Settings
-define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/ecommerce-main/public/'); // Adjust if in a subdirectory
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'];
+$script_name = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+$base_path = rtrim(str_replace('/public', '', $script_name), '/');
+define('BASE_URL', $protocol . '://' . $host . $base_path . '/public/');
+
 define('UPLOAD_DIR', 'uploads/');
 
 // API Keys & Credentials
