@@ -56,7 +56,7 @@ class SaleController extends Controller {
                 $_SESSION['message_type'] = "danger";
             }
         }
-        header('Location: /sale');
+        header('Location: ' . url('sale'));
         exit;
     }
 
@@ -70,7 +70,7 @@ class SaleController extends Controller {
                 $_SESSION['message_type'] = "success";
             }
         }
-        header('Location: /sale');
+        header('Location: ' . url('sale'));
         exit;
     }
 
@@ -112,11 +112,11 @@ class SaleController extends Controller {
                 $_SESSION['last_sale_id'] = $sale_id;
                 $_SESSION['message'] = "Sale recorded! Admin must confirm payment.";
                 $_SESSION['message_type'] = "warning";
-                header('Location: /sale/receipt');
+                header('Location: ' . url('sale/receipt'));
             } else {
                 $_SESSION['message'] = "Error processing sale.";
                 $_SESSION['message_type'] = "danger";
-                header('Location: /sale');
+                header('Location: ' . url('sale'));
             }
             exit;
         }
@@ -147,7 +147,7 @@ class SaleController extends Controller {
                 $_SESSION['message_type'] = "danger";
             }
         }
-        header('Location: /sale/history');
+        header('Location: ' . url('sale/history'));
         exit;
     }
 
@@ -164,7 +164,7 @@ class SaleController extends Controller {
                 $_SESSION['message_type'] = "danger";
             }
         }
-        header('Location: /sale/history');
+        header('Location: ' . url('sale/history'));
         exit;
     }
 
@@ -172,7 +172,7 @@ class SaleController extends Controller {
         if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], $roles)) {
             $_SESSION['message'] = "You are not authorized to view this page.";
             $_SESSION['message_type'] = "danger";
-            header('Location: /');
+            header('Location: ' . BASE_URL);
             exit;
         }
     }

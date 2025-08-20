@@ -27,14 +27,14 @@ class AuthController extends Controller {
                 $_SESSION['message'] = "Invalid username or password!";
                 $_SESSION['message_type'] = "danger";
             }
-            header('Location: /');
+            header('Location: ' . BASE_URL);
             exit;
         }
     }
 
     public function logout() {
         session_destroy();
-        header('Location: /');
+        header('Location: ' . BASE_URL);
         exit;
     }
 
@@ -43,7 +43,7 @@ class AuthController extends Controller {
             if ($_POST['password'] !== $_POST['confirm_password']) {
                 $_SESSION['message'] = "Passwords do not match!";
                 $_SESSION['message_type'] = "danger";
-                header('Location: /');
+                header('Location: ' . BASE_URL);
                 exit;
             }
 
@@ -51,7 +51,7 @@ class AuthController extends Controller {
             if ($user) {
                 $_SESSION['message'] = "Username or email already exists!";
                 $_SESSION['message_type'] = "danger";
-                header('Location: /');
+                header('Location: ' . BASE_URL);
                 exit;
             }
 
@@ -86,7 +86,7 @@ class AuthController extends Controller {
                 $_SESSION['message'] = "Error creating account.";
                 $_SESSION['message_type'] = "danger";
             }
-            header('Location: /');
+            header('Location: ' . BASE_URL);
             exit;
         }
     }
@@ -100,7 +100,7 @@ class AuthController extends Controller {
             $_SESSION['message'] = "Invalid or expired token.";
             $_SESSION['message_type'] = "danger";
         }
-        header('Location: /');
+        header('Location: ' . BASE_URL);
         exit;
     }
 }

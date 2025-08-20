@@ -14,7 +14,7 @@ define('ORG_EMAIL', 'sales.olansgee@gmail.com');
 define('REPORT_RECIPIENTS', 'sales.olansgee@gmail.com,olansgee@gmail.com');
 
 // Application Settings
-define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/public/'); // Adjust if in a subdirectory
+define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/ecommerce-main/public/'); // Adjust if in a subdirectory
 define('UPLOAD_DIR', 'uploads/');
 
 // API Keys & Credentials

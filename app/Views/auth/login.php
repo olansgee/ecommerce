@@ -15,7 +15,7 @@
                 <div class="tab-content">
                     <!-- Login Tab -->
                     <div class="tab-pane active" id="login">
-                        <form action="/auth/login" method="post">
+                        <form action="<?= url('auth/login') ?>" method="post">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username or Email</label>
                                 <input type="text" class="form-control form-control-lg" id="username" name="username" required>
@@ -32,7 +32,7 @@
 
                     <!-- Signup Tab -->
                     <div class="tab-pane" id="signup">
-                        <form action="/auth/signup" method="post">
+                        <form action="<?= url('auth/signup') ?>" method="post">
                             <div class="mb-3">
                                 <label for="signup_username" class="form-label">Username</label>
                                 <input type="text" class="form-control form-control-lg" id="signup_username" name="username" required>

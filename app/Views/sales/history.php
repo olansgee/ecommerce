@@ -26,13 +26,13 @@
                         <td><span class="badge bg-<?= $sale['delivery_status'] == 'delivered' ? 'success' : 'warning' ?>"><?= ucfirst($sale['delivery_status']) ?></span></td>
                         <td>
                             <?php if($sale['payment_status'] === 'incomplete'): ?>
-                            <form action="/sale/confirmpayment" method="post" class="d-inline">
+                            <form action="<?= url('sale/confirmpayment') ?>" method="post" class="d-inline">
                                 <input type="hidden" name="sale_id" value="<?= $sale['id'] ?>">
                                 <button type="submit" class="btn btn-sm btn-success">Confirm Payment</button>
                             </form>
                             <?php endif; ?>
                             <?php if($_SESSION['role'] == 'admin'): ?>
-                            <form action="/sale/updatedelivery" method="post" class="d-inline">
+                            <form action="<?= url('sale/updatedelivery') ?>" method="post" class="d-inline">
                                 <input type="hidden" name="sale_id" value="<?= $sale['id'] ?>">
                                 <select name="delivery_status" class="form-select form-select-sm d-inline w-auto">
                                     <option value="pending" <?= $sale['delivery_status'] == 'pending' ? 'selected' : '' ?>>Pending</option>
