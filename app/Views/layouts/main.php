@@ -6,14 +6,14 @@
     <title><?= $title ?? 'Olansgee Technology' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?= url('css/style.css') ?>">
 </head>
 <body>
     <!-- Top Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <img src='/assets/img/newlogo3.png' width='30' height='30' alt="Logo" class="d-inline-block align-top me-2">
+            <a class="navbar-brand" href="<?= url() ?>">
+                <img src='<?= url('assets/img/newlogo3.png') ?>' width='30' height='30' alt="Logo" class="d-inline-block align-top me-2">
                 <?= ORG_NAME ?>
             </a>
             <div class="d-flex align-items-center">
@@ -23,7 +23,7 @@
                         <i class="fas fa-user-circle me-1"></i> <?= $_SESSION['username'] ?>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+                        <li><a class="dropdown-item" href="<?= url('auth/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
                 <?php endif; ?>

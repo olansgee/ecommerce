@@ -32,6 +32,9 @@ set_exception_handler('App\Core\Error::exceptionHandler');
 // Require the configuration file
 require_once '../config/config.php';
 
+// Require the helpers file
+require_once '../app/helpers.php';
+
 // Create a new router instance
 $router = new App\Core\Router();
 

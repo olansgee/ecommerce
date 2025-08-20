@@ -12,7 +12,7 @@ class AdminController extends Controller {
     }
 
     public function settings() {
-        $this->view('admin/settings', ['title' => 'Settings']);
+        $this->view('Admin/settings', ['title' => 'Settings']);
     }
 
     public function createCashier() {
@@ -20,7 +20,7 @@ class AdminController extends Controller {
             if ($_POST['password'] !== $_POST['confirm_password']) {
                 $_SESSION['message'] = "Passwords do not match!";
                 $_SESSION['message_type'] = "danger";
-                header('Location: /admin/settings');
+                header('Location: ' . url('admin/settings'));
                 exit;
             }
 
@@ -28,7 +28,7 @@ class AdminController extends Controller {
             if ($user) {
                 $_SESSION['message'] = "Username or email already exists!";
                 $_SESSION['message_type'] = "danger";
-                header('Location: /admin/settings');
+                header('Location: ' . url('admin/settings'));
                 exit;
             }
 
@@ -46,20 +46,20 @@ class AdminController extends Controller {
                 $_SESSION['message'] = "Error creating cashier account.";
                 $_SESSION['message_type'] = "danger";
             }
-            header('Location: /admin/settings');
+            header('Location: ' . url('admin/settings'));
             exit;
         }
     }
 
     public function reports() {
-        $this->view('admin/reports', ['title' => 'Sales Reports']);
+        $this->view('Admin/reports', ['title' => 'Sales Reports']);
     }
 
     private function checkAuth($roles = []) {
         if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], $roles)) {
             $_SESSION['message'] = "You are not authorized to view this page.";
             $_SESSION['message_type'] = "danger";
-            header('Location: /');
+            header('Location: ' . BASE_URL);
             exit;
         }
     }

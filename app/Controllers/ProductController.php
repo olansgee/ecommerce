@@ -31,7 +31,7 @@ class ProductController extends Controller {
                 $_SESSION['message'] = "Error adding product.";
                 $_SESSION['message_type'] = "danger";
             }
-            header('Location: /product');
+            header('Location: ' . url('product'));
             exit;
         }
     }
@@ -60,7 +60,7 @@ class ProductController extends Controller {
                 $_SESSION['message'] = "Error updating product.";
                 $_SESSION['message_type'] = "danger";
             }
-            header('Location: /product');
+            header('Location: ' . url('product'));
             exit;
         }
     }
@@ -77,7 +77,7 @@ class ProductController extends Controller {
                 $_SESSION['message'] = "Error deleting product.";
                 $_SESSION['message_type'] = "danger";
             }
-            header('Location: /product');
+            header('Location: ' . url('product'));
             exit;
         }
     }
@@ -86,7 +86,7 @@ class ProductController extends Controller {
         if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], $roles)) {
             $_SESSION['message'] = "You are not authorized to view this page.";
             $_SESSION['message_type'] = "danger";
-            header('Location: /');
+            header('Location: ' . BASE_URL);
             exit;
         }
     }

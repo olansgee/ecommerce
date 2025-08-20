@@ -25,7 +25,7 @@
                     <?php foreach($products as $p): ?>
                     <tr>
                         <td><?= $p['id'] ?></td>
-                        <td><img src="/uploads/<?= $p['image'] ?>" alt="<?= $p['name'] ?>" class="product-image-thumb"></td>
+                        <td><img src="<?= url('uploads/' . $p['image']) ?>" alt="<?= $p['name'] ?>" class="product-image-thumb"></td>
                         <td><?= $p['name'] ?></td>
                         <td><?= $p['category'] ?></td>
                         <td>₦<?= number_format($p['price'], 2) ?></td>
@@ -38,10 +38,10 @@
                                     data-price="<?= $p['price'] ?>"
                                     data-stock="<?= $p['stock'] ?>"
                                     data-category="<?= $p['category'] ?>"
-                                    data-image="/uploads/<?= $p['image'] ?>">
+                                    data-image="<?= url('uploads/' . $p['image']) ?>">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <form action="/product/delete" method="post" class="d-inline">
+                            <form action="<?= url('product/delete') ?>" method="post" class="d-inline">
                                 <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
                                     <i class="fas fa-trash"></i>
@@ -64,7 +64,7 @@
                 <h5 class="modal-title">Add New Product</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form action="/product/create" method="post" enctype="multipart/form-data">
+            <form action="<?= url('product/create') ?>" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <!-- Form fields for adding a product -->
                     <div class="mb-3">
@@ -109,7 +109,7 @@
                 <h5 class="modal-title">Update Product</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form action="/product/update" method="post" enctype="multipart/form-data">
+            <form action="<?= url('product/update') ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="product_id" id="update-product-id">
                 <input type="hidden" name="current_image" id="current-image">
                 <div class="modal-body">

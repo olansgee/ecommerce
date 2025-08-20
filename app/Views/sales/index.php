@@ -13,11 +13,11 @@
                     <div class="col-md-3 mb-3">
                         <div class="card h-100">
                             <div class="card-body text-center">
-                                <img src="/uploads/<?= $p['image'] ?>" alt="<?= $p['name'] ?>" class="product-image">
+                                <img src="<?= url('uploads/' . $p['image']) ?>" alt="<?= $p['name'] ?>" class="product-image">
                                 <h6 class="card-title"><?= $p['name'] ?></h6>
                                 <p class="card-text text-success fw-bold">₦<?= number_format($p['price'], 2) ?></p>
                                 <p class="small text-muted">Stock: <?= $p['stock'] ?></p>
-                                <form action="/sale/addtocart" method="post">
+                                <form action="<?= url('sale/addtocart') ?>" method="post">
                                     <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
                                     <input type="number" name="quantity" value="1" min="1" max="<?= $p['stock'] ?>" class="form-control mb-2">
                                     <button type="submit" class="btn btn-sm btn-primary w-100" <?= $p['stock'] == 0 ? 'disabled' : '' ?>>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="text-end">
                                 <div class="fw-bold">₦<?= number_format($subtotal, 2) ?></div>
-                                <form action="/sale/removefromcart" method="post" class="d-inline">
+                                <form action="<?= url('sale/removefromcart') ?>" method="post" class="d-inline">
                                     <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                                     <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                 </form>
@@ -88,7 +88,7 @@
                 <h5 class="modal-title">Complete Purchase</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form action="/sale/checkout" method="post">
+            <form action="<?= url('sale/checkout') ?>" method="post">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Customer Name</label>

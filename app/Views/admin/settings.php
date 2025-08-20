@@ -7,7 +7,7 @@
                 <h5 class="card-title mb-0">Create Cashier Account</h5>
             </div>
             <div class="card-body">
-                <form action="/admin/createcashier" method="post">
+                <form action="<?= url('admin/createcashier') ?>" method="post">
                     <div class="mb-3">
                         <label for="cashier_username" class="form-label">Username</label>
                         <input type="text" class="form-control" id="cashier_username" name="username" required>
