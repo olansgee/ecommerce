@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace App\Core;
 
 class Error {
     public static function errorHandler($level, $message, $file, $line) {
